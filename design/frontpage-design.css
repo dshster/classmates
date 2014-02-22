@@ -27,10 +27,12 @@ body {
 .button:focus { outline: none; }
 
 .link {
+	color: #4474be;
 	text-decoration: none;
 	border-bottom: 1px solid;
 }
 .link { border-bottom-color: transparent; }
+.link_local { border-bottom-style: dotted; }
 
 .header {
 	height: 62px;
@@ -192,7 +194,7 @@ body {
 
 .classmates {
 	margin: 34px -30px;
-	padding: 18px 30px;
+	padding: 16px 30px;
 	border-radius: 6px;
 	background-color: #faf6d8;
 	background-image: url('images/classmates-background.jpg');
@@ -202,6 +204,58 @@ body {
 	font-size: 23px;
 }
 .classmates-list {}
+.classmates__result {
+	margin: 10px 0px 4px;
+	min-height: 11px;
+}
+.classmates__result_error {}
+.classmates__result_loading {
+	background-image: url('images/loader.gif');
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.classmates__more {
+	display: inline-block;
+	border-bottom-color: #4474be;
+	cursor: pointer;
+}
+.classmates__item {
+	position: relative;
+	display: inline-block;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
+	margin: 0 8px 6px 0;
+	padding: 2px;
+	width: 40px;
+	height: 40px;
+	border-radius: 4px;
+	background-color: #fff;
+	cursor: pointer;
+}
+.classmates__item_hover { background-color: #46ca39; }
+.classmates__item_active {
+	background-color: #4474be;
+	margin: -2px 6px 4px -2px;
+	padding: 4px;
+}
+.classmates__icon {
+	display: block;
+	width: 40px;
+	height: 40px;
+}
+.classmates__item_hover .classmates__label { display: block; }
+.classmates__label {
+	position: absolute;
+	top: -40px;
+	left: -4px;
+	z-index: 10;
+	display: none;
+	padding: 3px 6px;
+	background-color: #fff;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .15);
+	font-size: 12px;
+	line-height: 15px;
+}
+.classmates__caption {}
 
 .calendar {}
 .calendar__title {}
