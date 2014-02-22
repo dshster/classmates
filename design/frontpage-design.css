@@ -23,7 +23,15 @@ body {
 	box-shadow: 0 0 15px 2px rgba(0, 0, 0, .3);
 }
 
-.button {}
+.button {
+	padding: 7px 26px 8px;
+	border: none;
+	border-radius: 4px;
+	color: #fff;
+	text-shadow: 0 1px 0 rgba(78, 58, 60, .6);
+	font-size: 17px;
+	cursor: pointer;
+}
 .button:focus { outline: none; }
 
 .link {
@@ -58,9 +66,6 @@ body {
 	padding: 11px 0;
 }
 .personal__signin-button {
-	padding: 7px 26px 8px;
-	border: none;
-	border-radius: 4px;
 	background: rgb(99,103,124);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0,rgba(99,103,124,1)), color-stop(100%,rgba(77,80,97,1)));
 	background: -webkit-linear-gradient(top, rgba(99,103,124,1) 0,rgba(77,80,97,1) 100%);
@@ -69,11 +74,7 @@ body {
 	background:      -o-linear-gradient(top, rgba(99,103,124,1) 0,rgba(77,80,97,1) 100%);
 	background:         linear-gradient(to bottom, rgba(99,103,124,1) 0,rgba(77,80,97,1) 100%);
 	box-shadow: 0 1px 4px rgba(0, 0, 0, .5), inset 0 1px 0 rgba(255, 255, 255, .25);
-	color: #fff;
-	text-shadow: 0 1px 0 rgba(78, 58, 60, .6);
-	font-size: 17px;
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#63677c', endColorstr='#4d5061',GradientType=0);
-	cursor: pointer;
 }
 .personal__signin-button:active {
 	padding: 8px 26px 7px;
@@ -242,29 +243,117 @@ body {
 	width: 40px;
 	height: 40px;
 }
-.classmates__item_hover .classmates__label { display: block; }
 .classmates__label {
 	position: absolute;
 	top: -40px;
 	left: -4px;
-	z-index: 10;
-	display: none;
+	z-index: -1;
 	padding: 3px 6px;
 	background-color: #fff;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, .15);
 	font-size: 12px;
 	line-height: 15px;
+	opacity: 0;
+	-webkit-transition: opacity .3s;
+	   -moz-transition: opacity .3s;
+	    -ms-transition: opacity .3s;
+	     -o-transition: opacity .3s;
+	        transition: opacity .3s;
+}
+.classmates__item_hover .classmates__label {
+	z-index: 1;
+	opacity: 1;
 }
 .classmates__caption {}
 
 .calendar {}
 .calendar__title {}
 
-.restaurant {}
-.restaurant__title {}
+.restaurants {}
+.restaurants__title {}
+
+.restaurant-list {}
+.restaurant__radio { display: none; }
+.restaurant__face {
+	position: relative;
+	display: inline-block;
+	margin: 0 30px 0 0;
+	padding: 15px 0 0;
+	width: 170px;
+	height: 155px;
+	border-radius: 4px;
+	background-color: #fcfcfc;
+	background-image: url('images/gray.jpg');
+	text-align: center;
+	opacity: .5;
+	cursor: pointer;
+	-webkit-transition: opacity .2s;
+	   -moz-transition: opacity .2s;
+	    -ms-transition: opacity .2s;
+	     -o-transition: opacity .2s;
+	        transition: opacity .2s;
+}
+.restaurant__title {
+	line-height: 23px;
+	font-size: 17px;
+	color: #4474be;
+	border-bottom-color: #4474be;
+}
+.restaurant__table {
+	font-size: 15px;
+	line-height: 14px;
+	line-height: 20px;
+}
+.restaurant__price {
+	display: block;
+	margin: 12px 0 4px;
+	line-height: 100%;
+	font-size: 17px;
+	color: #303030;
+}
+.restaurant__price:after { content: ' руб.' }
+.restaurant__unit {
+	font-size: 15px;
+	line-height: 14px;
+}
+.restaurant__change {
+	position: absolute;
+	bottom: 15px;
+	left: 28px;
+	display: none;
+	padding: 7px 20px 8px;
+	border: 1px solid #5790c8;
+	background: rgb(103,156,207);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(103,156,207,1)), color-stop(100%,rgba(73,129,189,1)));
+	background: -webkit-linear-gradient(top,  rgba(103,156,207,1) 0%,rgba(73,129,189,1) 100%);
+	background:    -moz-linear-gradient(top,  rgba(103,156,207,1) 0%, rgba(73,129,189,1) 100%);
+	background:     -ms-linear-gradient(top,  rgba(103,156,207,1) 0%,rgba(73,129,189,1) 100%);
+	background:      -o-linear-gradient(top,  rgba(103,156,207,1) 0%,rgba(73,129,189,1) 100%);
+	background:         linear-gradient(to bottom,  rgba(103,156,207,1) 0%,rgba(73,129,189,1) 100%);
+	box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, .25),
+	            0 1px 5px rgba(0, 0, 0, .4);
+	font-size: 15px;
+	line-height: 19px;
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#679ccf', endColorstr='#4981bd',GradientType=0 );
+}
+.restaurant__radio:checked + .restaurant__face { opacity: 1; }
+.restaurant__radio:checked + .restaurant__face .restaurant__change { display: block;}
+
+.editinplace__wrapper { line-height: 33px; }
+.editinplace__input {
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+	width: 140px;
+	color: #303030;
+	text-align: left;
+	font-size: 17px;
+	line-height: 100%;
+}
 
 .next-step {
 	position: relative;
+	margin: 105px 0 0;
 	height: 152px;
 	background-color: #faf6d8;
 	background-image: url('images/classmates-background.jpg');
