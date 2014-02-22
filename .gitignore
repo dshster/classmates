@@ -1,0 +1,4 @@
+# Npm modules.
+node_modules
+
+design/*.min.*

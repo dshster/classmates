@@ -1,0 +1,21 @@
+{
+  "name": "classmates",
+  "version": "0.0.0-ignored",
+  "description": "Выпускники.ru, тестовое задание front-end разработчика",
+  "author": {
+    "name": "Dmitry Shvalyov",
+    "email": "dmitry@shvalyov.ru",
+    "homepage": "http://shvalyov.ru/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dshster/classmates.git"
+  },
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-contrib-cssmin": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-concat": "latest",
+    "grunt-contrib-jshint": "latest"
+  }
+}
