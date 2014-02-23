@@ -266,8 +266,44 @@ body {
 }
 .classmates__caption {}
 
-.calendar {}
-.calendar__title {}
+.calendars {}
+.calendars__title {}
+.calendars-list {}
+.calendar__label {}
+.calendar__radio { display: none; }
+.calendar__face {
+	position: relative;
+	display: inline-block;
+	margin: 0 30px 0 0;
+	padding: 15px 0 0;
+	width: 170px;
+	height: 100px;
+	border-radius: 4px;
+	background-color: #fcfcfc;
+	background-image: url('images/gray.jpg');
+	color: #303030;
+	text-align: center;
+	-webkit-transition: opacity .2s;
+	   -moz-transition: opacity .2s;
+	    -ms-transition: opacity .2s;
+	     -o-transition: opacity .2s;
+	        transition: opacity .2s;
+	opacity: .5;
+	cursor: pointer;
+}
+.calendar__date {
+	font-weight: 500;
+	font-size: 17px;
+	line-height: 23px;
+}
+.calendar__day {
+	font-size: 15px;
+}
+.calendar__day:after { content: '\002c\a0'; }
+.calendar__time {}
+.calendar__radio:checked + .calendar__face { opacity: 1; }
+.calendar__radio:checked + .calendar__face .button_change { display: block; }
+
 
 .restaurants {}
 .restaurants__title {}
@@ -316,7 +352,10 @@ body {
 	font-size: 15px;
 	line-height: 14px;
 }
-.restaurant__change {
+.restaurant__radio:checked + .restaurant__face { opacity: 1; }
+.restaurant__radio:checked + .restaurant__face .button_change { display: block; }
+
+.button_change {
 	position: absolute;
 	bottom: 15px;
 	left: 28px;
@@ -336,7 +375,7 @@ body {
 	line-height: 19px;
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#679ccf', endColorstr='#4981bd',GradientType=0 );
 }
-.restaurant__change:active {
+.button_change:active {
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(100%,rgba(73,129,189,1)), color-stop(0%,rgba(103,156,207,1)));
 	background: -webkit-linear-gradient(top, rgba(73,129,189,1) 100%, rgba(103,156,207,1) 0%);
 	background:    -moz-linear-gradient(top, rgba(73,129,189,1) 100%, rgba(103,156,207,1) 0%);
@@ -348,8 +387,6 @@ body {
 	            0 1px 2px rgba(0, 0, 0, .4);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4981bd', endColorstr='#679ccf',GradientType=0 );
 }
-.restaurant__radio:checked + .restaurant__face { opacity: 1; }
-.restaurant__radio:checked + .restaurant__face .restaurant__change { display: block;}
 
 .editinplace__wrapper { line-height: 33px; }
 .editinplace__input {

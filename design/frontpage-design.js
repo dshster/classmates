@@ -1,7 +1,18 @@
 /* К сожалению я пока плохо знаю современные js-фреймворки (angularjs, backbone), поэтому делаю на jquery */
 
-(function($){
+(function($, moment){
 	'use strict';
+
+	// по условию задачи я немного не понял почему
+	// можно выбирать только одну дату и один ресторан?
+	// допустим, у нас есть выбор рестранов и мы выбираем тот,
+	// который нам нравится указывая цену на человека
+
+	// но зачем показывать несколько блоков с датами
+	// и давать возможность выбрать только одну?
+	// более логично дать на выбор несколько дат (те же 3)
+	// с возможностью изменить их
+	// или же просто показывать одну дату
 
 	// надо было откуда-то брать иконки с именами
 	var getMembersUrl = '//api.vk.com/method/groups.getMembers',
@@ -25,6 +36,71 @@
 			'min_price' : 1000 },
 	];
 
+	// вероятно это тоже бралось бы из json
+	var calendars = {
+		amount : 3,
+		time   : '19:00',
+		now    : moment()
+	};
+
+	var calendarsModel = {
+		// можно было бы объединить функционал календарей и ресторанов,
+		// но _завтра_ придёт заказчик или менеджер проектов
+		// и скажет поменять оформление одного из этих блоков
+		// поэтому я _за_ разделение оформления и функционала
+		// логически различных блоков, даже если их функционал в чем-то схож
+		classes: {
+			'face'   : 'calendar__face',
+			'label'  : 'calendar__label',
+			'date'   : 'calendar__date',
+			'day'    : 'calendar__day',
+			'time'   : 'calendar__time',
+			'radio'  : 'calendar__radio',
+			'change' : 'button button_change'
+		},
+
+		init: function() {
+			var $result = this;
+
+			$result.append(calendarsModel.buildCalendarList.apply(calendars));
+		},
+
+		templateCalendar: function() {
+			var day = moment().add('d', this);
+
+			var $template = {
+				label: $('<label>', { 'class': calendarsModel.classes.label }),
+				face: $('<div>', { 'class': calendarsModel.classes.face }),
+				date: $('<div>', { 'class': calendarsModel.classes.date }).text(day.format('D MMMM')),
+				day: $('<span>', { 'class': calendarsModel.classes.day }).text(day.format('dddd')),
+				time: $('<span>', { 'class': calendarsModel.classes.time }).text(calendars.time),
+				radio: $('<input>', { 'class': calendarsModel.classes.radio, 'type': 'radio', 'name': 'calendars' }),
+				change: $('<button>', { 'class': calendarsModel.classes.change, 'type': 'button' }).text('Изменить')
+			};
+
+			calendarsModel.setCalendarAction.apply($template);
+
+			return $template.label.append(
+				$template.radio,
+				$template.face.append(
+					$template.date, $template.day, $template.time, $template.change
+				)
+			);
+		},
+
+		buildCalendarList: function() {
+			var list = [],
+			    parameters = this;
+
+			for (var day = 0; day < parameters.amount; day++) {
+				list.push(calendarsModel.templateCalendar.apply(day));
+			}
+			return list;
+		},
+
+		setCalendarAction: function() {}
+	};
+
 	var restaurantsModel = {
 		classes: {
 			'face'    : 'restaurant__face',
@@ -34,7 +110,7 @@
 			'price'   : 'restaurant__price',
 			'unit'    : 'restaurant__unit',
 			'radio'   : 'restaurant__radio',
-			'change'  : 'button restaurant__change'
+			'change'  : 'button button_change'
 		},
 
 		init: function() {
@@ -288,15 +364,22 @@
 		$classmatesResult.empty();
 
 		$moreUsersLink.on('click', function(event) {
-			offsetUsers++;
 			//usersModel.init.apply($classmatesResult);
+			offsetUsers++;
 			event.preventDefault();
 		}).trigger('click');
 
 		$classmatesList.append($moreUsersLink);
 
+		var $calendarsList = $('.calendars-list');
+		if ($calendarsList.length) {
+			calendarsModel.init.apply($calendarsList);
+		}
+
 		var $restaurantList = $('.restaurants-list');
-		restaurantsModel.init.apply($restaurantList);
+		if ($restaurantList.length) {
+			restaurantsModel.init.apply($restaurantList);
+		}
 	});
 
-})(window.jQuery);
+})(window.jQuery, window.moment);
