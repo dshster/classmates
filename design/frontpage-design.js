@@ -216,7 +216,7 @@
 
 			$input.on('blur', function() {
 				// таймаут для корректной обработки blur
-				// перед нажатием на кнопку изменить
+				// перед нажатием на кнопку 'Изменить'
 				editinplace.wait = setTimeout(function() {
 					$change.trigger('click', false);
 				}, 120);
@@ -235,7 +235,7 @@
 
 			// этот метод помечен в jquery как deprecated,
 			// пока не нашел как правильно сохранить event
-			if (undefined !== typeof $._data(change, 'events').click) {
+			if ('undefined' !== typeof $._data(change, 'events').click) {
 				var click_event = $._data(change, 'events').click[0].handler;
 
 				$change.off('click');
@@ -252,7 +252,6 @@
 			var $element = $(this),
 			     price = input.val();
 
-			// добавить проверку вводимого значения
 			if (true === flag) {
 				$element.text(editinplace.validate.apply(price) || $element.text());
 			}
