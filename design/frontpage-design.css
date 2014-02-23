@@ -15,7 +15,7 @@ body {
 .page_wrapper {
 	margin: auto;
 	min-width: 1000px;
-	max-width: 1200px;
+	max-width: 1400px;
 }
 .page {
 	margin: 0 21px;
@@ -90,14 +90,16 @@ body {
 }
 
 .breadcrumbs {
+	overflow: hidden;
 	background-image: url('images/breadcrumbs__item_disable.png');
 	background-position: top left;
 	background-repeat: repeat-x;
+	white-space: nowrap;
 }
 .breadcrumbs__item {
 	position: relative;
 	display: inline-block;
-	padding: 0 10px 0 22px;
+	padding: 0 15px 0 22px;
 	background-image: url('images/breadcrumbs__item.png');
 	background-position: top left;
 	background-repeat: repeat-x;
@@ -108,7 +110,7 @@ body {
 }
 .breadcrumbs__item ~ .breadcrumbs__item {
 	margin: 0 0 0 22px;
-	padding: 0 40px 0 20px;
+	padding-left: 10px;
 }
 .breadcrumbs__item ~ .breadcrumbs__item:before {
 	position: absolute;
@@ -126,9 +128,12 @@ body {
 	content: url('images/breadcrumbs__item_after.png');
 }
 .breadcrumbs__link {
-	display: block;
+	display: inline-block;
+	overflow: hidden;
 	margin: 14px 0 17px;
+	text-overflow: ellipsis;
 	text-shadow: 0 1px 0 rgba(0, 0, 0, .15);
+	white-space: nowrap;
 	font-size: 17px;
 }
 .breadcrumbs__link.link {
@@ -263,6 +268,7 @@ body {
 .classmates__item_hover .classmates__label {
 	z-index: 1;
 	opacity: 1;
+	pointer-events: none;
 }
 .classmates__caption {}
 
@@ -291,6 +297,7 @@ body {
 	opacity: .5;
 	cursor: pointer;
 }
+.calendar__label:last-child .calendar__face { margin-right: 0; }
 .calendar__date {
 	font-weight: 500;
 	font-size: 17px;
@@ -340,6 +347,7 @@ body {
 	     -o-transition: opacity .2s;
 	        transition: opacity .2s;
 }
+.restaurant__label:last-child .restaurant__face { margin-right: 0; }
 .restaurant__title {
 	line-height: 23px;
 	font-size: 17px;
@@ -452,7 +460,7 @@ body {
 .overpayment {
 	position: absolute;
 	top: -79px;
-	right: 188px;
+	right: 13%;
 	padding: 30px 0 0;
 	width: 222px;
 	height: 222px;

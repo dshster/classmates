@@ -114,13 +114,13 @@
 				.on('click', function(event) {
 					var $calendar = $template.calendar.appendTo($template.face);
 
-					$calendar.on('click', function(event) {
+					$calendar.on('mousedown', function(event) {
 						event.stopPropagation();
 					});
 
-					$(window).on('click', function() {
+					$(window).on('mousedown', function() {
 						$calendar.remove();
-						$(window).off('click');
+						$(window).off('mousedown');
 					});
 
 					calendarsModel.calendar.startDate = $template.date.data('currentdate');
@@ -135,7 +135,7 @@
 							$template.day.text(momentdate.format('dddd'));
 						}
 						$calendar.remove();
-						$(window).off('click');
+						$(window).off('mousedown');
 					};
 
 					$calendar.ionCalendar(calendarsModel.calendar);
@@ -243,6 +243,10 @@
 						$result
 							.append(usersModel.buildUsersList.apply(result.response.items))
 							.removeClass(usersModel.classes.result + usersModel.classes.loading);
+
+						if (result.response.count <= offsetUsers * countUsers) {
+							$('.classmates__more').remove();
+						}
 					}
 				}
 			});
