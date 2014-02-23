@@ -196,24 +196,51 @@
 	};
 
 	var editinplace = {
+		wait: null,
+
 		init: function(change) {
 			var $element = this,
 			    $change = $(change),
 			    $wrapper = $('<div>', { 'class': 'editinplace__wrapper'} ),
-			    $input = $('<input>', { 'class': 'editinplace__input', 'placeholder': 'желаемая цена' });
+			    $input = $('<input>', {
+						'class': 'editinplace__input',
+						'type': 'text',
+						'pattern': '[0-9]{4,5}',
+						'placeholder': 'желаемая цена',
+						'title': 'Без единицы измерения'
+			    });
 
 			$element.wrap($wrapper);
 			$element.hide().parent().append($input);
 			$input.focus();
 
+			$input.on('blur', function() {
+				// таймаут для корректной обработки blur
+				// перед нажатием на кнопку изменить
+				editinplace.wait = setTimeout(function() {
+					$change.trigger('click', false);
+				}, 120);
+			});
+
+			$input.on('keydown', function(event) {
+				if (13 === event.keyCode) {
+					// Enter
+					$change.trigger('click', true);
+				} else if (27 === event.keyCode) {
+					// Esc
+					$change.trigger('click', false);
+				} else {
+				}
+			});
+
 			// этот метод помечен в jquery как deprecated,
 			// пока не нашел как правильно сохранить event
-			if (undefined !== $._data(change, 'events').click) {
+			if (undefined !== typeof $._data(change, 'events').click) {
 				var click_event = $._data(change, 'events').click[0].handler;
 
 				$change.off('click');
-				$change.on('click', function() {
-					editinplace.submit.apply($element, [$input]);
+				$change.on('click', function(event, flag) {
+					editinplace.submit.apply($element, [$input, (false === flag) ? false : true]);
 
 					$change.off('click');
 					$change.on('click', click_event);
@@ -221,14 +248,27 @@
 			}
 		},
 
-		submit: function(input) {
+		submit: function(input, flag) {
 			var $element = $(this),
 			     price = input.val();
 
 			// добавить проверку вводимого значения
-			$element.show().unwrap().text(price);
+			if (true === flag) {
+				$element.text(editinplace.validate.apply(price) || $element.text());
+			}
+
+			if (true === $element.parent().hasClass('editinplace__wrapper')) {
+				$element.parent().replaceWith($element);
+				clearTimeout(editinplace.wait);
+			}
+
+			$element.show();
 			$(input).remove();
-		}
+		},
+
+		validate: function() {
+			return $.trim(this.replace(/[^\0-9]/ig, ''));
+		},
 	};
 
 
