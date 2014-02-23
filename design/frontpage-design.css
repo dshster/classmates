@@ -297,13 +297,24 @@ body {
 	line-height: 23px;
 }
 .calendar__day {
+	display: inline-block;
 	font-size: 15px;
 }
-.calendar__day:after { content: '\002c\a0'; }
+.calendar__day:first-letter { text-transform: uppercase; }
+.calendar__day:after { content: '\002c'; }
 .calendar__time {}
 .calendar__radio:checked + .calendar__face { opacity: 1; }
 .calendar__radio:checked + .calendar__face .button_change { display: block; }
-
+.calendar__container {
+	position: absolute;
+	z-index: 1;
+	margin: 5px 5px 0;
+	width: 160px;
+	box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.3);
+}
+.calendar__container .ic__month { width: 83%; }
+.calendar__container .ic__year { display: none; }
+.calendar__container .ic__header select { font-weight: normal; }
 
 .restaurants {}
 .restaurants__title {}

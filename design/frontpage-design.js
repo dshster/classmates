@@ -50,13 +50,21 @@
 		// поэтому я _за_ разделение оформления и функционала
 		// логически различных блоков, даже если их функционал в чем-то схож
 		classes: {
-			'face'   : 'calendar__face',
-			'label'  : 'calendar__label',
-			'date'   : 'calendar__date',
-			'day'    : 'calendar__day',
-			'time'   : 'calendar__time',
-			'radio'  : 'calendar__radio',
-			'change' : 'button button_change'
+			'face'     : 'calendar__face',
+			'label'    : 'calendar__label',
+			'date'     : 'calendar__date',
+			'day'      : 'calendar__day',
+			'time'     : 'calendar__time',
+			'radio'    : 'calendar__radio',
+			'change'   : 'button button_change',
+			'calendar' : 'calendar__container'
+		},
+
+		calendar: {
+			lang: 'ru',
+			sundayFirst: false,
+			years: 1,
+			format: 'DD.MM.YYYY'
 		},
 
 		init: function() {
@@ -71,11 +79,12 @@
 			var $template = {
 				label: $('<label>', { 'class': calendarsModel.classes.label }),
 				face: $('<div>', { 'class': calendarsModel.classes.face }),
-				date: $('<div>', { 'class': calendarsModel.classes.date }).text(day.format('D MMMM')),
+				date: $('<div>', { 'class': calendarsModel.classes.date }).text(day.format('D MMMM')).data('currentdate', day.format(calendarsModel.calendar.format)),
 				day: $('<span>', { 'class': calendarsModel.classes.day }).text(day.format('dddd')),
 				time: $('<span>', { 'class': calendarsModel.classes.time }).text(calendars.time),
 				radio: $('<input>', { 'class': calendarsModel.classes.radio, 'type': 'radio', 'name': 'calendars' }),
-				change: $('<button>', { 'class': calendarsModel.classes.change, 'type': 'button' }).text('Изменить')
+				change: $('<button>', { 'class': calendarsModel.classes.change, 'type': 'button' }).text('Изменить'),
+				calendar: $('<div>', { 'class': calendarsModel.classes.calendar })
 			};
 
 			calendarsModel.setCalendarAction.apply($template);
@@ -98,7 +107,43 @@
 			return list;
 		},
 
-		setCalendarAction: function() {}
+		setCalendarAction: function() {
+			var $template = this;
+
+			$template.change
+				.on('click', function(event) {
+					var $calendar = $template.calendar.appendTo($template.face);
+
+					$calendar.on('click', function(event) {
+						event.stopPropagation();
+					});
+
+					$(window).on('click', function() {
+						$calendar.remove();
+						$(window).off('click');
+					});
+
+					calendarsModel.calendar.startDate = $template.date.data('currentdate');
+					calendarsModel.calendar.onClick = function(date) {
+						var momentdate = moment(date, calendarsModel.calendar.format);
+
+						if (true === momentdate.isValid()) {
+							$template.date
+								.data('currentdate', date)
+								.text(momentdate.format('D MMMM'));
+
+							$template.day.text(momentdate.format('dddd'));
+						}
+						$calendar.remove();
+						$(window).off('click');
+					};
+
+					$calendar.ionCalendar(calendarsModel.calendar);
+					event.preventDefault();
+					// предотвратить window click
+					event.stopPropagation();
+				});
+		}
 	};
 
 	var restaurantsModel = {
@@ -364,7 +409,7 @@
 		$classmatesResult.empty();
 
 		$moreUsersLink.on('click', function(event) {
-			//usersModel.init.apply($classmatesResult);
+			usersModel.init.apply($classmatesResult);
 			offsetUsers++;
 			event.preventDefault();
 		}).trigger('click');
