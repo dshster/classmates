@@ -5,7 +5,7 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON("package.json"),
 		meta: {
-			banner: "/*!\n build: <%= grunt.template.today(\"dd-mm-yyyy\") %>, Dmitry Shvalyov, dmitry@shvalyov.ru */\n"
+			banner: "/*!\n build: <%= grunt.template.today(\"dd-mm-yyyy HH:MM\") %>, Dmitry Shvalyov, dmitry@shvalyov.ru */\n"
 		},
 
 		jshint: {

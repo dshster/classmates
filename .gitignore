@@ -1,4 +1,4 @@
 # Npm modules.
 node_modules
 
-design/*.min.*
+# design/*.min.*
