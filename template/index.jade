@@ -1,0 +1,16 @@
+extends ./partials/html.jade
+
+block title
+	title= title
+
+block content
+	+grid
+		.header
+			+row
+				+col(2, 5)
+					.gravatar
+						img.gravatar__img(src='https://s.gravatar.com/avatar/83a344f76b05b92ff76e38e40ad91dd9?s=80')
+					h1.heading-h1= header
+					p.sub-heading
+						a.link(href= repository.url)= repository.title
+				+col(6, 9)

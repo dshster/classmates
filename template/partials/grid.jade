@@ -1,0 +1,18 @@
+mixin grid
+	.c16__page-wrapper
+		.c16__page
+			.c16__base
+				if block
+					block
+
+mixin row
+	.c16__row
+		if block
+			block
+
+mixin col(pos, split)
+	-pos = 'c16--pos' + pos
+	-split = 'c16--split' + split
+	div(class = 'c16__col ' + pos + ' ' + split)
+		if block
+			block

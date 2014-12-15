@@ -1,3 +1,7 @@
 {
-
+	"app": "./app",
+	"template": "./template",
+	"data": "./data",
+	"styles": "./content/styles/",
+	"compile": "./app/compile"
 }

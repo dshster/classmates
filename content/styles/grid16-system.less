@@ -1,0 +1,41 @@
+.c16 {
+	&__page-wrapper {
+		width: 25%;
+		margin: auto;
+	}
+	&__page {
+		width: 25%;
+	}
+	&__base {
+		position: relative;
+		margin-left: -600%;
+		width: 100%;
+		float: left;
+		clear: both;
+	}
+	&__row {
+		width: 100%;
+		clear: both;
+		float: left;
+	}
+	&__col {
+		position: relative;
+		float: left;
+		width: 100%;
+		padding-left: 10px !important;
+		padding-right: 10px !important;
+		z-index: 1;
+		box-sizing: border-box;
+	}
+	.generate-columns(@n, @i: 1) when (@i =< @n) {
+		&--pos@{i} {
+			left: (@i - 1) * 100% !important;
+		}
+		&--split@{i} {
+			width: (@i) * 100% !important;
+			margin-right: -(@i) * 100% !important;
+		}
+		.generate-columns(@n, (@i + 1));
+	}
+	.generate-columns(16);
+}
