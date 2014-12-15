@@ -15,5 +15,19 @@
   "bugs": {
     "url": "https://github.com/dshster/classmates/issues"
   },
-  "homepage": "https://github.com/dshster/classmates"
+  "homepage": "https://github.com/dshster/classmates",
+  "devDependencies": {
+    "connect": "latest",
+    "connect-livereload": "latest",
+    "gulp": "latest",
+    "gulp-autoprefixer": "latest",
+    "gulp-data": "^1.0.2",
+    "gulp-filesize": "latest",
+    "gulp-jade": "latest",
+    "gulp-less": "latest",
+    "gulp-livereload": "latest",
+    "gulp-load-plugins": "latest",
+    "gulp-rename": "latest",
+    "serve-static": "latest"
+  }
 }
