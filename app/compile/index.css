@@ -178,146 +178,6 @@ td,
 th {
   padding: 0;
 }
-.c16__page-wrapper {
-  width: 25%;
-  margin: auto;
-}
-.c16__page {
-  width: 25%;
-}
-.c16__base {
-  position: relative;
-  margin-left: -600%;
-  width: 100%;
-  float: left;
-  clear: both;
-}
-.c16__row {
-  width: 100%;
-  clear: both;
-  float: left;
-}
-.c16__col {
-  position: relative;
-  float: left;
-  width: 100%;
-  padding-left: 10px !important;
-  padding-right: 10px !important;
-  z-index: 1;
-  box-sizing: border-box;
-}
-.c16--pos1 {
-  left: 0% !important;
-}
-.c16--split1 {
-  width: 100% !important;
-  margin-right: -100% !important;
-}
-.c16--pos2 {
-  left: 100% !important;
-}
-.c16--split2 {
-  width: 200% !important;
-  margin-right: -200% !important;
-}
-.c16--pos3 {
-  left: 200% !important;
-}
-.c16--split3 {
-  width: 300% !important;
-  margin-right: -300% !important;
-}
-.c16--pos4 {
-  left: 300% !important;
-}
-.c16--split4 {
-  width: 400% !important;
-  margin-right: -400% !important;
-}
-.c16--pos5 {
-  left: 400% !important;
-}
-.c16--split5 {
-  width: 500% !important;
-  margin-right: -500% !important;
-}
-.c16--pos6 {
-  left: 500% !important;
-}
-.c16--split6 {
-  width: 600% !important;
-  margin-right: -600% !important;
-}
-.c16--pos7 {
-  left: 600% !important;
-}
-.c16--split7 {
-  width: 700% !important;
-  margin-right: -700% !important;
-}
-.c16--pos8 {
-  left: 700% !important;
-}
-.c16--split8 {
-  width: 800% !important;
-  margin-right: -800% !important;
-}
-.c16--pos9 {
-  left: 800% !important;
-}
-.c16--split9 {
-  width: 900% !important;
-  margin-right: -900% !important;
-}
-.c16--pos10 {
-  left: 900% !important;
-}
-.c16--split10 {
-  width: 1000% !important;
-  margin-right: -1000% !important;
-}
-.c16--pos11 {
-  left: 1000% !important;
-}
-.c16--split11 {
-  width: 1100% !important;
-  margin-right: -1100% !important;
-}
-.c16--pos12 {
-  left: 1100% !important;
-}
-.c16--split12 {
-  width: 1200% !important;
-  margin-right: -1200% !important;
-}
-.c16--pos13 {
-  left: 1200% !important;
-}
-.c16--split13 {
-  width: 1300% !important;
-  margin-right: -1300% !important;
-}
-.c16--pos14 {
-  left: 1300% !important;
-}
-.c16--split14 {
-  width: 1400% !important;
-  margin-right: -1400% !important;
-}
-.c16--pos15 {
-  left: 1400% !important;
-}
-.c16--split15 {
-  width: 1500% !important;
-  margin-right: -1500% !important;
-}
-.c16--pos16 {
-  left: 1500% !important;
-}
-.c16--split16 {
-  width: 1600% !important;
-  margin-right: -1600% !important;
-}
 @font-face {
   font-family: 'Ubuntu';
   font-style: normal;
@@ -339,14 +199,63 @@ th {
 html {
   width: 100%;
   background-color: #505765;
+  background-image: url('../design/images/background.jpg');
 }
 body {
   margin: 0;
   font-family: 'Ubuntu';
   font-size: 15px;
 }
+.link {
+  color: #4474be;
+}
+.button {
+  padding: 7px 26px 8px;
+  vertical-align: middle;
+  border: none;
+  color: #ffffff;
+  border-radius: 4px;
+  text-shadow: 0 1px 0 rgba(78, 58, 60, 0.6);
+  font-size: 17px;
+  cursor: pointer;
+  background-image: -webkit-linear-gradient(top, #63677c 0, #4d5061 100%);
+  background-image: linear-gradient(to bottom, #63677c 0, #4d5061 100%);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+.button:active {
+  padding: 8px 26px 7px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(0, 0, 0, 0.25);
+  background-image: -webkit-linear-gradient(top, #4d5061 0, #63677c 100%);
+  background-image: linear-gradient(to bottom, #4d5061 0, #63677c 100%);
+}
+.button:focus {
+  outline: none;
+}
 .page_wrapper {
   margin: auto;
   min-width: 1000px;
   max-width: 1400px;
+}
+.page_wrapper .page {
+  margin: 0 21px;
+  background-color: #ffffff;
+  box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.3);
+}
+.header {
+  padding: 0 27px;
+  background-image: -webkit-linear-gradient(top, #3c3f4d 0, #202331 100%);
+  background-image: linear-gradient(to bottom, #3c3f4d 0, #202331 100%);
+}
+.logo {
+  display: inline-block;
+  padding: 8px 0;
+}
+.profile {
+  float: right;
+  padding: 14px 0 0;
+}
+.content {
+  margin: 0 200px;
+  padding: 29px 0 0;
+  color: #161616;
 }

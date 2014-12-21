@@ -28,6 +28,7 @@
     "gulp-livereload": "latest",
     "gulp-load-plugins": "latest",
     "gulp-rename": "latest",
-    "serve-static": "latest"
+    "serve-static": "latest",
+    "util-extend": "^1.0.1"
   }
 }

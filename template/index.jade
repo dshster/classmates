@@ -3,9 +3,26 @@ extends ./partials/html.jade
 block title
 	title= title
 
+block append scripts
+	script(src='/scripts/classmates.js')
+
 block content
 	.page_wrapper
 		.page
 			header.header
-				a.link(href="/")
-					img.logo__image(src="design/images/logo.png", alt= title)
+				a.link.logo(href='/')
+					img.logo__image(src='design/images/logo.png', alt= title)
+
+				.profile
+					button.button.profile__signin Войти
+
+			.content
+				.classmates(ng-controller='classmatesList', ng-cloak)
+					h2.classmates__title= classmates.title
+					.classmates__list
+						span.classmates__item(ng-repeat='user in users', hover-class='classmates__item_hover' title='{{user.first_name}} {{user.last_name}}')
+							i {{user.status}}
+							img.classmates__icon(ng-src='{{user.photo_50}}')
+							span.classmates__label
+								span.classmates__caption {{user.first_name}} {{user.last_name}}
+						a.link.link_local.classmates__more(ng-click='nextSlice()') Показать еще {{slice}} человек

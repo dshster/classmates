@@ -2,7 +2,10 @@ doctype html
 html
 	head
 		block title
-		link(rel='stylesheet', href='compile/index.css')
+		link(rel='stylesheet', href='/compile/index.css')
+
+		block scripts
+			script(src='/components/angularjs/angular.min.js')
 
 	body(ng-app= angular.app)
 		block content

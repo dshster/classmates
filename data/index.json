@@ -2,5 +2,8 @@
 	"title": "Выпускники.ru",
 	"angular": {
 		"app": "classmates"
+	},
+	"classmates": {
+		"title": "Ваши однокурсники"
 	}
 }

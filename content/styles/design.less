@@ -1,6 +1,7 @@
 html {
 	width: 100%;
 	background-color: #505765;
+	background-image: url('../design/images/background.jpg');
 }
 
 body {
@@ -9,8 +10,69 @@ body {
 	font-size: 15px;
 }
 
+.link { color: @link; }
+.button {
+	padding: 7px 26px 8px;
+	vertical-align: middle;
+	border: none;
+	color: @inverted;
+	border-radius: 4px;
+	text-shadow: 0 1px 0 rgba(78, 58, 60, .6);
+	font-size: 17px;
+	cursor: pointer;
+	background-image: linear-gradient(to bottom, rgba(99,103,124,1) 0, rgba(77,80,97,1) 100%);
+	box-shadow: 0 1px 4px rgba(0, 0, 0, .5), inset 0 1px 0 rgba(255, 255, 255, .25);
+
+	&:active {
+		padding: 8px 26px 7px;
+		box-shadow: 0 0 1px rgba(0, 0, 0, .5), inset 0 1px 0 rgba(0, 0, 0, .25);
+		background-image: linear-gradient(to bottom, rgba(77, 80, 97, 1) 0, rgba(99, 103, 124, 1) 100%);
+	}
+	&:focus { outline: none; }
+}
+
 .page_wrapper {
 	margin: auto;
 	min-width: 1000px;
 	max-width: 1400px;
+
+	.page {
+		margin: 0 21px;
+		background-color: @base-background;
+		box-shadow: 0 0 15px 2px rgba(0, 0, 0, .3);
+	}
+}
+
+
+.header {
+	padding: 0 27px;
+	background-image: linear-gradient(to bottom, rgba(60,63,77,1) 0, rgba(32,35,49,1) 100%);
+}
+.logo {
+	display: inline-block;
+	padding: 8px 0;
+
+	&__image {}
+}
+
+.profile {
+	float: right;
+	padding: 14px 0 0;
+
+	&__signin {
+	}
+}
+
+.content {
+	margin: 0 200px;
+	padding: 29px 0 0;
+	color: @base;
+}
+
+.classmates {
+	&__title {}
+	&__list {}
+	&__icon {}
+	&__label {}
+	&__caption {}
 }
