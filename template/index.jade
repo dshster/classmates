@@ -4,13 +4,8 @@ block title
 	title= title
 
 block content
-	+grid
-		.header
-			+row
-				+col(2, 5)
-					.gravatar
-						img.gravatar__img(src='https://s.gravatar.com/avatar/83a344f76b05b92ff76e38e40ad91dd9?s=80')
-					h1.heading-h1= header
-					p.sub-heading
-						a.link(href= repository.url)= repository.title
-				+col(6, 9)
+	.page_wrapper
+		.page
+			header.header
+				a.link(href="/")
+					img.logo__image(src="design/images/logo.png", alt= title)

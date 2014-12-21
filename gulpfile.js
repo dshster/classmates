@@ -41,7 +41,9 @@ gulp.task('server', function(next) {
 	server.use(require('connect-livereload')({
 		port: 35729
 	}));
-	server.use(servestatic(prefs.app));
+	server.use(servestatic(prefs.app, {
+		index: ['index.html']
+	}));
 	server.listen(process.env.PORT || 3000, next);
 });
 

@@ -1,8 +1,6 @@
 {
-	"title": "Markup blueprint",
-	"header": "Dmitry Shvalyov",
-	"repository": {
-		"url": "https://github.com/dshster",
-		"title": "View My GitHub Profile"
+	"title": "Выпускники.ru",
+	"angular": {
+		"app": "classmates"
 	}
 }
